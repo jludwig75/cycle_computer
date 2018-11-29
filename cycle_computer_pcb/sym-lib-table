@@ -1,0 +1,7 @@
+(sym_lib_table
+  (lib (name wemos)(type Legacy)(uri /home/jludwig/code/cycle_computer/cycle_computer/kicad-wemos/library/wemos.lib)(options "")(descr ""))
+  (lib (name cycle_computer_components)(type Legacy)(uri /home/jludwig/code/cycle_computer/cycle_computer/cycle_computer_components.lib)(options "")(descr ""))
+  (lib (name MPL3115A2_breakout)(type Legacy)(uri /home/jludwig/code/cycle_computer/cycle_computer/MPL3115A2_breakout.lib)(options "")(descr ""))
+  (lib (name q_pmos_dgs)(type Legacy)(uri /home/jludwig/code/cycle_computer/cycle_computer/q_pmos_dgs.lib)(options "")(descr ""))
+  (lib (name q_nmos_dgs)(type Legacy)(uri /home/jludwig/code/cycle_computer/cycle_computer/q_nmos_dgs.lib)(options "")(descr ""))
+)

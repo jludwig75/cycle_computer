@@ -1,0 +1,321 @@
+EESchema Schematic File Version 4
+LIBS:cycle_computer-cache
+EELAYER 26 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title "Cycling Computer"
+Date "2018-10-11"
+Rev ""
+Comp "Jonathan Ludwig"
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L cycle_computer_components:AdafruitUltimateGps U2
+U 1 1 5BBFAB12
+P 5300 6450
+F 0 "U2" H 5927 6701 50  0000 L CNN
+F 1 "AdafruitUltimateGps" H 5927 6610 50  0000 L CNN
+F 2 "" H 5000 6450 50  0001 C CNN
+F 3 "" H 5000 6450 50  0001 C CNN
+	1    5300 6450
+	1    0    0    -1  
+$EndComp
+NoConn ~ 4650 5850
+NoConn ~ 4650 6050
+NoConn ~ 4650 5950
+NoConn ~ 4650 6650
+NoConn ~ 3000 3200
+NoConn ~ 3000 3300
+NoConn ~ 3000 3700
+NoConn ~ 3000 3800
+NoConn ~ 3000 3900
+$Comp
+L wemos:Wemos_LoLin32 U1
+U 1 1 5BBFA7C3
+P 3500 4150
+F 0 "U1" H 3500 5453 60  0000 C CNN
+F 1 "Wemos_LoLin32" H 3500 5347 60  0000 C CNN
+F 2 "" H 4050 3700 60  0000 C CNN
+F 3 "http://www.wemos.cc/Products/d1_mini.html" H 3500 5241 60  0000 C CNN
+	1    3500 4150
+	1    0    0    -1  
+$EndComp
+NoConn ~ 3000 3400
+NoConn ~ 3000 3500
+NoConn ~ 3000 3600
+NoConn ~ 3000 4000
+NoConn ~ 3000 4100
+NoConn ~ 3000 4200
+NoConn ~ 3000 4300
+NoConn ~ 3000 4400
+NoConn ~ 3000 4500
+NoConn ~ 3000 4600
+NoConn ~ 3000 4700
+NoConn ~ 4000 3300
+NoConn ~ 4000 3400
+NoConn ~ 4000 3800
+NoConn ~ 4000 3900
+NoConn ~ 4000 4000
+NoConn ~ 4000 4100
+NoConn ~ 4000 4200
+NoConn ~ 4000 4300
+NoConn ~ 4000 4700
+NoConn ~ 4000 4800
+NoConn ~ 4000 5000
+NoConn ~ 4000 5100
+NoConn ~ 4650 6150
+$Comp
+L cycle_computer_components:MPL3115A2_breakout U3
+U 1 1 5BBFCD86
+P 5050 1950
+F 0 "U3" H 5278 1696 50  0000 L CNN
+F 1 "MPL3115A2_breakout" H 5278 1605 50  0000 L CNN
+F 2 "" H 5050 1950 50  0001 C CNN
+F 3 "" H 5050 1950 50  0001 C CNN
+	1    5050 1950
+	1    0    0    -1  
+$EndComp
+$Comp
+L cycle_computer_components:MPU9250_breakout U4
+U 1 1 5BBFCE43
+P 6150 3350
+F 0 "U4" H 6577 3351 50  0000 L CNN
+F 1 "MPU9250_breakout" H 6577 3260 50  0000 L CNN
+F 2 "" H 5800 3350 50  0001 C CNN
+F 3 "" H 5800 3350 50  0001 C CNN
+	1    6150 3350
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4900 3500 4000 3500
+Wire Wire Line
+	4000 3200 4700 3200
+Wire Wire Line
+	5200 3200 5200 3050
+Wire Wire Line
+	5550 3050 5200 3050
+Connection ~ 5200 3050
+Wire Wire Line
+	5200 3050 5200 2800
+Wire Wire Line
+	4000 3700 5000 3700
+Wire Wire Line
+	5450 3700 5450 3250
+Wire Wire Line
+	5450 3250 5550 3250
+Wire Wire Line
+	5550 3150 5400 3150
+Wire Wire Line
+	5400 3150 5400 3600
+Wire Wire Line
+	5400 3600 5100 3600
+NoConn ~ 5550 3350
+NoConn ~ 5550 3450
+NoConn ~ 5550 3550
+NoConn ~ 5550 3650
+NoConn ~ 5550 3750
+NoConn ~ 5550 3850
+Wire Wire Line
+	5000 2800 5000 3700
+Connection ~ 5000 3700
+Wire Wire Line
+	5000 3700 5450 3700
+Wire Wire Line
+	5100 2800 5100 3600
+Connection ~ 5100 3600
+Wire Wire Line
+	5100 3600 4000 3600
+NoConn ~ 5000 1700
+NoConn ~ 5100 1700
+$Comp
+L cycle_computer_components:st7745r_breakout U5
+U 1 1 5BC00796
+P 6700 4600
+F 0 "U5" H 7727 4451 50  0000 L CNN
+F 1 "st7745r_breakout" H 7727 4360 50  0000 L CNN
+F 2 "" H 6050 4600 50  0001 C CNN
+F 3 "" H 6050 4600 50  0001 C CNN
+	1    6700 4600
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4000 4900 4300 4900
+Wire Wire Line
+	4300 4900 4300 5250
+Wire Wire Line
+	4300 5550 4450 5550
+Wire Wire Line
+	4000 4400 4350 4400
+Wire Wire Line
+	4350 4400 4350 5450
+Wire Wire Line
+	4450 6450 4450 5550
+Wire Wire Line
+	4450 6450 4650 6450
+Connection ~ 4450 5550
+Wire Wire Line
+	4650 6250 4400 6250
+Wire Wire Line
+	4400 6250 4400 4600
+Wire Wire Line
+	4400 4600 4000 4600
+Wire Wire Line
+	4650 6350 4250 6350
+Wire Wire Line
+	4250 6350 4250 4500
+Wire Wire Line
+	4250 4500 4000 4500
+NoConn ~ 5550 4050
+NoConn ~ 5550 4350
+NoConn ~ 5550 5150
+Wire Wire Line
+	5550 4250 4650 4250
+Wire Wire Line
+	4650 4250 4650 5550
+Connection ~ 4650 5550
+Wire Wire Line
+	4650 5550 5550 5550
+NoConn ~ 5550 4450
+NoConn ~ 5550 4550
+NoConn ~ 5550 4650
+NoConn ~ 5550 4750
+NoConn ~ 5550 4850
+NoConn ~ 5550 4950
+NoConn ~ 5550 5050
+Wire Wire Line
+	4450 5550 4550 5550
+Wire Wire Line
+	4350 5450 3500 5450
+Wire Wire Line
+	3500 5450 3500 5750
+Wire Wire Line
+	3500 6150 3500 6550
+Wire Wire Line
+	3500 6550 4650 6550
+Wire Wire Line
+	3200 5950 3200 5250
+Wire Wire Line
+	3200 5250 4300 5250
+Connection ~ 4300 5250
+Wire Wire Line
+	4300 5250 4300 5550
+Wire Wire Line
+	6000 2350 5350 2350
+Wire Wire Line
+	5350 2350 5350 2900
+Wire Wire Line
+	5350 2900 4900 2900
+Wire Wire Line
+	4900 2900 4900 3500
+Wire Wire Line
+	6000 2750 5450 2750
+Wire Wire Line
+	5450 2750 5450 2950
+Wire Wire Line
+	5450 2950 5550 2950
+Wire Wire Line
+	6300 2550 6300 2800
+Wire Wire Line
+	6300 2800 5200 2800
+Connection ~ 5200 2800
+Wire Wire Line
+	4900 2900 4150 2900
+Wire Wire Line
+	4150 2900 4150 2650
+Connection ~ 4900 2900
+Wire Wire Line
+	4150 2250 4150 2200
+Wire Wire Line
+	4150 2200 4800 2200
+Wire Wire Line
+	4800 2200 4800 2800
+Wire Wire Line
+	4800 2800 4900 2800
+Wire Wire Line
+	3850 2450 3800 2450
+Wire Wire Line
+	3800 2450 3800 2800
+Wire Wire Line
+	3800 2800 4700 2800
+Wire Wire Line
+	4700 2800 4700 3200
+Connection ~ 4700 3200
+Wire Wire Line
+	4700 3200 5200 3200
+Wire Wire Line
+	4500 4000 4500 4600
+Wire Wire Line
+	4500 4600 4550 4600
+Wire Wire Line
+	4550 4600 4550 5550
+Connection ~ 4550 5550
+Wire Wire Line
+	4550 5550 4650 5550
+Wire Wire Line
+	4800 4200 5350 4200
+Wire Wire Line
+	5350 4200 5350 4150
+Wire Wire Line
+	5350 4150 5550 4150
+Wire Wire Line
+	4800 4200 4800 5450
+Wire Wire Line
+	4800 5450 5550 5450
+Wire Wire Line
+	4800 3800 4800 3750
+Wire Wire Line
+	4800 3750 4350 3750
+Wire Wire Line
+	4350 3750 4350 4400
+Connection ~ 4350 4400
+$Comp
+L q_nmos_dgs:Q_NMOS_DGS Q2
+U 1 1 5BC739F8
+P 4050 2450
+F 0 "Q2" H 4255 2404 50  0000 L CNN
+F 1 "Q_NMOS_DGS" H 4255 2495 50  0000 L CNN
+F 2 "" H 4250 2550 50  0001 C CNN
+F 3 "~" H 4050 2450 50  0001 C CNN
+	1    4050 2450
+	1    0    0    1   
+$EndComp
+$Comp
+L q_nmos_dgs:Q_NMOS_DGS Q4
+U 1 1 5BC7DA03
+P 6100 2550
+F 0 "Q4" H 6306 2596 50  0000 L CNN
+F 1 "Q_NMOS_DGS" H 6306 2505 50  0000 L CNN
+F 2 "" H 6300 2650 50  0001 C CNN
+F 3 "~" H 6100 2550 50  0001 C CNN
+	1    6100 2550
+	-1   0    0    -1  
+$EndComp
+$Comp
+L q_nmos_dgs:Q_NMOS_DGS Q3
+U 1 1 5BC807E1
+P 4700 4000
+F 0 "Q3" H 4905 4046 50  0000 L CNN
+F 1 "Q_NMOS_DGS" H 4905 3955 50  0000 L CNN
+F 2 "" H 4900 4100 50  0001 C CNN
+F 3 "~" H 4700 4000 50  0001 C CNN
+	1    4700 4000
+	1    0    0    -1  
+$EndComp
+Connection ~ 4800 4200
+$Comp
+L q_nmos_dgs:Q_NMOS_DGS Q1
+U 1 1 5BC8095B
+P 3400 5950
+F 0 "Q1" H 3605 5996 50  0000 L CNN
+F 1 "Q_NMOS_DGS" H 3605 5905 50  0000 L CNN
+F 2 "" H 3600 6050 50  0001 C CNN
+F 3 "~" H 3400 5950 50  0001 C CNN
+	1    3400 5950
+	1    0    0    -1  
+$EndComp
+$EndSCHEMATC
