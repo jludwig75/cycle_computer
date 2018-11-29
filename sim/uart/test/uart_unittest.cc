@@ -4,7 +4,7 @@
 #include <gmock/gmock.h>
 #include <gmock-global/gmock-global.h>
 
-#include "circular_buffer.h"
+#include "circular_buffer/circular_buffer.h"
 
 void CircularBuffer__CircularBuffer(CircularBuffer *instance, size_t buffer_size);
 bool CircularBuffer__push(CircularBuffer *instance, char c);
@@ -207,6 +207,44 @@ TEST_F(UartUlator_Test, can_get_host_serial_interface)
     ASSERT_TRUE(NULL != uart.get_host_interface());
 }
 
+TEST_F(UartUlator_Test, can_write_array_with_host_inteface)
+{
+    UartUlator uart(1024, 256);
+
+    SerialInterface *host = uart.get_host_interface();
+
+    EXPECT_GLOBAL_CALL(CircularBuffer__push, CircularBuffer__push(_tx_buffer, 'j')).
+                        WillOnce(testing::Return(true));
+    EXPECT_GLOBAL_CALL(CircularBuffer__push, CircularBuffer__push(_tx_buffer, 'k')).
+                        WillOnce(testing::Return(true));
+    EXPECT_GLOBAL_CALL(CircularBuffer__push, CircularBuffer__push(_tx_buffer, 'l')).
+                        WillOnce(testing::Return(true));
+    EXPECT_GLOBAL_CALL(CircularBuffer__push, CircularBuffer__push(_tx_buffer, 'm')).
+                        WillOnce(testing::Return(true));
+
+    ASSERT_EQ(4, host->write("jklm", 4));
+}
+
+TEST_F(UartUlator_Test, write_array_with_host_inteface_overflow)
+{
+    UartUlator uart(1024, 256);
+
+    SerialInterface *host = uart.get_host_interface();
+
+    EXPECT_GLOBAL_CALL(CircularBuffer__push, CircularBuffer__push(_tx_buffer, 'j')).
+                        WillOnce(testing::Return(true));
+    EXPECT_GLOBAL_CALL(CircularBuffer__push, CircularBuffer__push(_tx_buffer, 'k')).
+                        WillOnce(testing::Return(true));
+    EXPECT_GLOBAL_CALL(CircularBuffer__push, CircularBuffer__push(_tx_buffer, 'l')).
+                        WillOnce(testing::Return(true));
+    EXPECT_GLOBAL_CALL(CircularBuffer__push, CircularBuffer__push(_tx_buffer, 'm')).
+                        WillOnce(testing::Return(true));
+    EXPECT_GLOBAL_CALL(CircularBuffer__push, CircularBuffer__push(_tx_buffer, 'n')).
+                        WillOnce(testing::Return(false));
+    // Never expect and attempt to wire 'o'.
+
+    ASSERT_EQ(4, host->write("jklmno", 6));
+}
 
 // Device Serial Interface
 TEST_F(UartUlator_Test, can_get_device_serial_interface)

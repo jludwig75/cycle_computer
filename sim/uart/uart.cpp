@@ -3,7 +3,7 @@
 #include "circular_buffer/circular_buffer.h"
 
 
-size_t SerialInterface::write(char *buffer, size_t length)
+size_t SerialInterface::write(const char *buffer, size_t length)
 {
     for (size_t i = 0; i < length; i++)
     {

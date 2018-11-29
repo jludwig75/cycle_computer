@@ -95,3 +95,27 @@ TEST(uart_buffer_integration_test, send_max_bytes_to_host)
     ASSERT_EQ((int)'m', host->read());
     ASSERT_EQ(-1, host->read());  // This should now be empty
 }
+
+TEST(uart_buffer_integration_test, send_max_bytes_to_host_using_array_write)
+{
+    UartUlator uart(4, 4);
+
+    SerialInterface *host = uart.get_host_interface();
+    SerialInterface *device = uart.get_device_interface();
+
+    ASSERT_EQ(0, host->available());
+    ASSERT_EQ(0, device->available());
+
+    ASSERT_TRUE(device->write("jklm", 4));
+    ASSERT_FALSE(device->write('n')); // This would overflow
+
+    ASSERT_EQ(4, host->available());
+    ASSERT_EQ(0, device->available());    // Make sure nothing is available here
+
+    ASSERT_EQ(-1, device->read());    // Make sure nothing is available here
+    ASSERT_EQ((int)'j', host->read());
+    ASSERT_EQ((int)'k', host->read());
+    ASSERT_EQ((int)'l', host->read());
+    ASSERT_EQ((int)'m', host->read());
+    ASSERT_EQ(-1, host->read());  // This should now be empty
+}
