@@ -9,3 +9,5 @@ release:
 clean:
 	rm -rf Debug
 	rm -rf Release
+
+all: debug release

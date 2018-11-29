@@ -10,7 +10,7 @@ cxx_executable(${UNIT_TEST_NAME} test gmock_main uart.cpp)
 
 add_custom_command(
      TARGET ${UNIT_TEST_NAME}
-     COMMENT "Run tests"
+     COMMENT "${UNIT_TEST_NAME} uint tests"
      POST_BUILD 
      WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
      COMMAND ${UNIT_TEST_NAME}
