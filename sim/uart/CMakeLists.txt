@@ -15,3 +15,5 @@ add_custom_command(
      WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
      COMMAND ${UNIT_TEST_NAME}
 )
+
+add_library (uart uart.cpp circular_buffer/circular_buffer.cpp)
