@@ -207,10 +207,42 @@ TEST_F(UartUlator_Test, can_get_host_serial_interface)
     ASSERT_TRUE(NULL != uart.get_host_interface());
 }
 
+TEST_F(UartUlator_Test, host_interface_available_calls_rx_buffer_number_of_bytes_in_buffer)
+{
+    UartUlator uart(1024, 1024);
+    SerialInterface *host = uart.get_host_interface();
+
+    EXPECT_GLOBAL_CALL(CircularBuffer__number_of_bytes_in_buffer, CircularBuffer__number_of_bytes_in_buffer(_rx_buffer)).
+                        WillOnce(testing::Return(66));
+
+    ASSERT_EQ(66, host->available());
+}
+
+TEST_F(UartUlator_Test, host_interface_read_calls_pop_on_rx_buffer)
+{
+    UartUlator uart(1024, 1024);
+    SerialInterface *host = uart.get_host_interface();
+
+    EXPECT_GLOBAL_CALL(CircularBuffer__pop, CircularBuffer__pop(_rx_buffer, testing::_)).
+                        WillOnce([](CircularBuffer *instance, char &c){ c = (int)'j'; return true; });
+
+    ASSERT_EQ((int('j')), host->read());
+}
+
+TEST_F(UartUlator_Test, host_interface_write_calls_tx_buffer_push)
+{
+    UartUlator uart(1024, 256);
+    SerialInterface *host = uart.get_host_interface();
+
+    EXPECT_GLOBAL_CALL(CircularBuffer__push, CircularBuffer__push(_tx_buffer, 'k')).
+                        WillOnce(testing::Return(true));
+
+    ASSERT_EQ(1, host->write('k'));
+}
+
 TEST_F(UartUlator_Test, can_write_array_with_host_inteface)
 {
     UartUlator uart(1024, 256);
-
     SerialInterface *host = uart.get_host_interface();
 
     EXPECT_GLOBAL_CALL(CircularBuffer__push, CircularBuffer__push(_tx_buffer, 'j')).
@@ -228,7 +260,6 @@ TEST_F(UartUlator_Test, can_write_array_with_host_inteface)
 TEST_F(UartUlator_Test, write_array_with_host_inteface_overflow)
 {
     UartUlator uart(1024, 256);
-
     SerialInterface *host = uart.get_host_interface();
 
     EXPECT_GLOBAL_CALL(CircularBuffer__push, CircularBuffer__push(_tx_buffer, 'j')).
@@ -246,6 +277,7 @@ TEST_F(UartUlator_Test, write_array_with_host_inteface_overflow)
     ASSERT_EQ(4, host->write("jklmno", 6));
 }
 
+
 // Device Serial Interface
 TEST_F(UartUlator_Test, can_get_device_serial_interface)
 {
@@ -253,3 +285,38 @@ TEST_F(UartUlator_Test, can_get_device_serial_interface)
 
     ASSERT_TRUE(NULL != uart.get_device_interface());
 }
+
+TEST_F(UartUlator_Test, device_interface_available_calls_tx_buffer_number_of_bytes_in_buffer)
+{
+    UartUlator uart(1024, 1024);
+    SerialInterface *device = uart.get_device_interface();
+
+    EXPECT_GLOBAL_CALL(CircularBuffer__number_of_bytes_in_buffer, CircularBuffer__number_of_bytes_in_buffer(_tx_buffer)).
+                        WillOnce(testing::Return(66));
+
+    ASSERT_EQ(66, device->available());
+}
+
+TEST_F(UartUlator_Test, device_interface_read_calls_pop_on_tx_buffer)
+{
+    UartUlator uart(1024, 1024);
+    SerialInterface *device = uart.get_device_interface();
+
+    EXPECT_GLOBAL_CALL(CircularBuffer__pop, CircularBuffer__pop(_tx_buffer, testing::_)).
+                        WillOnce([](CircularBuffer *instance, char &c){ c = (int)'j'; return true; });
+
+    ASSERT_EQ((int('j')), device->read());
+}
+
+TEST_F(UartUlator_Test, device_interface_write_calls_rx_buffer_push)
+{
+    UartUlator uart(1024, 256);
+    SerialInterface *device = uart.get_device_interface();
+
+    EXPECT_GLOBAL_CALL(CircularBuffer__push, CircularBuffer__push(_rx_buffer, 'k')).
+                        WillOnce(testing::Return(true));
+
+    ASSERT_EQ(1, device->write('k'));
+}
+
+// No need to duplicate the array write tests for the device_interface if we know write works.
