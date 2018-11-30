@@ -42,4 +42,4 @@ if(CMAKE_COMPILER_IS_GNUCXX)
     SETUP_TARGET_FOR_COVERAGE_LCOV(NAME ${UNIT_TEST_NAME}_coverage EXECUTABLE ${UNIT_TEST_NAME} DEPENDENCIES ${UNIT_TEST_NAME})
 endif()
 
-add_library (uart_ulator uart_ulator.cpp circular_buffer/circular_buffer.cpp)
+add_library (uart_ulator uart_ulator.cpp circular_buffer/circular_buffer.cpp uart_sim.cpp)
