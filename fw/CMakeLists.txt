@@ -1,0 +1,2 @@
+add_subdirectory(gps_transaction_recorder)
+add_subdirectory(transaction_logger)
