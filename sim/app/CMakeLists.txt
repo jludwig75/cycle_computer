@@ -1,0 +1,1 @@
+add_library (app_sim main.cpp)

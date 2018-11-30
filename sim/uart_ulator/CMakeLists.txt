@@ -2,9 +2,10 @@ add_subdirectory(circular_buffer)
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 include_directories(${REPO_ROOT_DIR}/gmock-global/include/)
+include_directories(${REPO_ROOT_DIR}/intf)
 
-set(UNIT_TEST_NAME uart_unittest)
-cxx_executable(${UNIT_TEST_NAME} test gmock_main uart.cpp)
+set(UNIT_TEST_NAME uart_ulator_unittest)
+cxx_executable(${UNIT_TEST_NAME} test gmock_main uart_ulator.cpp)
 add_custom_command(
      TARGET ${UNIT_TEST_NAME}
      COMMENT "${UNIT_TEST_NAME} uint tests"
@@ -22,8 +23,8 @@ if(CMAKE_COMPILER_IS_GNUCXX)
     SETUP_TARGET_FOR_COVERAGE_LCOV(NAME ${UNIT_TEST_NAME}_coverage EXECUTABLE ${UNIT_TEST_NAME} DEPENDENCIES ${UNIT_TEST_NAME})
 endif()
 
-set(UNIT_TEST_NAME uart_circular_buffer_integration_test)
-cxx_executable(${UNIT_TEST_NAME} test gmock_main uart.cpp circular_buffer/circular_buffer.cpp)
+set(UNIT_TEST_NAME uart_ulator_circular_buffer_integration_test)
+cxx_executable(${UNIT_TEST_NAME} test gmock_main uart_ulator.cpp circular_buffer/circular_buffer.cpp)
 add_custom_command(
      TARGET ${UNIT_TEST_NAME}
      COMMENT "${UNIT_TEST_NAME} integration tests"
@@ -41,4 +42,4 @@ if(CMAKE_COMPILER_IS_GNUCXX)
     SETUP_TARGET_FOR_COVERAGE_LCOV(NAME ${UNIT_TEST_NAME}_coverage EXECUTABLE ${UNIT_TEST_NAME} DEPENDENCIES ${UNIT_TEST_NAME})
 endif()
 
-add_library (uart uart.cpp circular_buffer/circular_buffer.cpp)
+add_library (uart_ulator uart_ulator.cpp circular_buffer/circular_buffer.cpp)

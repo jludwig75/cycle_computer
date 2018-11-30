@@ -7,8 +7,8 @@ release:
 	cd Release && cmake -DCMAKE_BUILD_TYPE=Release .. && make
 
 coverage: debug
-	cd Debug && make uart_unittest_coverage
-	cd Debug && make uart_circular_buffer_integration_test
+	cd Debug && make uart_ulator_unittest_coverage
+	cd Debug && make uart_ulator_circular_buffer_integration_test
 	cd Debug && make circular_buffer_unittest
 
 clean:
