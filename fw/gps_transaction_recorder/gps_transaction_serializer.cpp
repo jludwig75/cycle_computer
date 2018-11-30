@@ -1,7 +1,7 @@
 #include "uart_transaction_serializer.h"
 
 
-bool UartTransactionSerializer::serialize_nmea_sentence(uint8_t *transaction_stream,
+bool GpsTransactionSerializer::serialize_nmea_sentence(uint8_t *transaction_stream,
                                 size_t transaction_stream_bytes_remaining,
                                 size_t &bytes_written_to_stream,
                                 uint64_t transaction_time,
@@ -10,7 +10,7 @@ bool UartTransactionSerializer::serialize_nmea_sentence(uint8_t *transaction_str
 
 }
 
-bool UartTransactionSerializer::serialize_pps_pulse(uint8_t *transaction_stream,
+bool GpsTransactionSerializer::serialize_pps_pulse(uint8_t *transaction_stream,
                                 size_t transaction_stream_bytes_remaining,
                                 size_t &bytes_written_to_stream,
                                 uint64_t transaction_time)
@@ -18,10 +18,10 @@ bool UartTransactionSerializer::serialize_pps_pulse(uint8_t *transaction_stream,
 
 }
 
-bool UartTransactionSerializer::desrialize_uart_transaction(uint8_t *transaction_stream,
+bool GpsTransactionSerializer::desrialize_uart_transaction(uint8_t *transaction_stream,
                                     size_t transaction_stream_bytes_remaining,
                                     size_t &bytes_read_from_stream,
-                                    UartTransaction &deserialized_transaction)
+                                    GpsTransaction &deserialized_transaction)
 {
 
 }

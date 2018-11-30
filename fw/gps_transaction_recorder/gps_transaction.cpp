@@ -1,9 +1,9 @@
-#include "uart_transaction.h"
+#include "gps_transaction.h"
 
 #include <assert.h>
 
 
-UartTransaction::UartTransaction(uint64_t transaction_time_us, TranactionType type) :
+GpsTransaction::GpsTransaction(uint64_t transaction_time_us, TranactionType type) :
     _transaction_time_us(transaction_time_us),
     _type(type),
     _sentence()
@@ -11,7 +11,7 @@ UartTransaction::UartTransaction(uint64_t transaction_time_us, TranactionType ty
     assert(PPS_pulse == _type);
 }
 
-UartTransaction::UartTransaction(uint64_t transaction_time_us, TranactionType type, const std::string &nmea_sentence) :
+GpsTransaction::GpsTransaction(uint64_t transaction_time_us, TranactionType type, const std::string &nmea_sentence) :
     _transaction_time_us(transaction_time_us),
     _type(type),
     _sentence(nmea_sentence)
@@ -19,17 +19,17 @@ UartTransaction::UartTransaction(uint64_t transaction_time_us, TranactionType ty
     assert(NMEA_sentence == _type);
 }
 
-uint64_t UartTransaction::transaction_time_us() const
+uint64_t GpsTransaction::transaction_time_us() const
 {
     return _transaction_time_us;
 }
 
-UartTransaction::TranactionType UartTransaction::transaction_type() const
+GpsTransaction::TranactionType GpsTransaction::transaction_type() const
 {
     return _type;
 }
 
-std::string UartTransaction::get_nmea_sentence() const
+std::string GpsTransaction::get_nmea_sentence() const
 {
     assert(NMEA_sentence == _type);
 

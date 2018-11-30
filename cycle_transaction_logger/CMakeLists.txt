@@ -6,4 +6,4 @@ include_directories(${REPO_ROOT_DIR}/sim)
 
 add_executable(cycle_transaction_logger_sim fw/cycle_transaction_logger.cpp sim/seup_cycle_logger_simulated_hw.cpp)
 
-target_link_libraries(cycle_transaction_logger_sim app_sim transaction_logger)
+target_link_libraries(cycle_transaction_logger_sim app_sim transaction_logger gps_transaction_recorder)

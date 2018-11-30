@@ -1,6 +1,11 @@
 #include "transaction_logger.h"
 
 
+TransactionLogger::TransactionLogger(const char *log_file_name)
+{
+    
+}
+
 bool TransactionLogger::write_transaction(const Transaction &transaction)
 {
     uint8_t transaction_blob[MAX_TRANSACTION_BLOB_BYTES];

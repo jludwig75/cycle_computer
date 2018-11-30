@@ -3,10 +3,10 @@
 #include <stdint.h>
 #include <stdlib.h>
 
-#include "uart_transaction.h"
+#include "gps_transaction.h"
 
 
-class UartTransactionSerializer
+class GpsTransactionSerializer
 {
 public:
     bool serialize_nmea_sentence(uint8_t *transaction_stream,
@@ -21,5 +21,5 @@ public:
     bool desrialize_uart_transaction(uint8_t *transaction_stream,
                                         size_t transaction_stream_bytes_remaining,
                                         size_t &bytes_read_from_stream,
-                                        UartTransaction &deserialized_transaction);
+                                        GpsTransaction &deserialized_transaction);
 };

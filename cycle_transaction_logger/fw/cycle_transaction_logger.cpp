@@ -3,12 +3,12 @@
 #include "uart.h"
 
 
-SerialInterface &gps_serial = uart__get_serial_interface(1);
+SerialInterface *gps_serial = uart__get_serial_interface(1);
 
 class CycleTransactionLoggerApp
 {
 public:
-    CycleTransactionLoggerApp(SerialInterface &gps_serial, const char *transaction_log_file_name) :
+    CycleTransactionLoggerApp(SerialInterface *gps_serial, const char *transaction_log_file_name) :
         _transaction_logger(transaction_log_file_name),
         _gps_recorder(gps_serial, _transaction_logger)
     {
