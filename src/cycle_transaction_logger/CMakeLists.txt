@@ -1,6 +1,6 @@
-include_directories(${REPO_ROOT_DIR}/fw)
-include_directories(${REPO_ROOT_DIR}/intf)
-include_directories(${REPO_ROOT_DIR}/sim)
+include_directories(${REPO_ROOT_DIR}/include/intf)
+include_directories(${REPO_ROOT_DIR}/src/fw)
+include_directories(${REPO_ROOT_DIR}/src/sim)
 
 #set_source_files_properties(fw/cycle_transaction_logger.ino PROPERTIES LANGUAGE CXX)
 
