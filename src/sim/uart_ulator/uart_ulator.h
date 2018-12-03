@@ -1,16 +1,22 @@
 #pragma once
 
+#include "ulator/ulator.h"
+
 #include <stdlib.h>
 
 #include "serial_interface.h"
 
 class CircularBuffer;
 
-class UartUlator
+class UartUlator : public Ulator
 {
 public:
 	UartUlator(size_t rx_buffer_size, size_t tx_buffer_size);
 	virtual ~UartUlator();
+
+    // Ulator
+	bool start();
+    void stop();
 
 	size_t host_available() const;
 	int host_read();

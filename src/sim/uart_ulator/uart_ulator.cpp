@@ -88,6 +88,15 @@ UartUlator::~UartUlator()
     delete _tx_buffer;
 }
 
+bool UartUlator::start()
+{
+    return true;
+}
+
+void UartUlator::stop()
+{
+}
+
 
 size_t UartUlator::host_available() const
 {
