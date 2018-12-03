@@ -2,7 +2,7 @@ add_subdirectory(circular_buffer)
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 include_directories(${REPO_ROOT_DIR}/gmock-global/include/)
-include_directories(${REPO_ROOT_DIR}/include/intf)
+include_directories(${REPO_ROOT_DIR}/lib/intf)
 
 set(UNIT_TEST_NAME uart_ulator_unittest)
 cxx_executable(${UNIT_TEST_NAME} test gmock_main uart_ulator.cpp)
