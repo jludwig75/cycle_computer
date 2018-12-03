@@ -33,7 +33,7 @@ public:
     {
         return _uart.host_read();
     }
-	virtual size_t write(char c)
+	virtual size_t write(uint8_t c)
     {
         return _uart.host_write(c);
     }
@@ -57,7 +57,7 @@ public:
     {
         return _uart.device_read();
     }
-	virtual size_t write(char c)
+	virtual size_t write(uint8_t c)
     {
         return _uart.device_write(c);
     }
