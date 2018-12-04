@@ -23,3 +23,5 @@ public:
                                         size_t &bytes_read_from_stream,
                                         GpsTransaction &deserialized_transaction);
 };
+
+extern GpsTransactionSerializer GpsSerializer;

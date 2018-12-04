@@ -1,6 +1,10 @@
 #include "gps_transaction.h"
 
+#include "gps_transaction_serializer.h"
+
 #include <assert.h>
+#include <string.h>
+
 
 
 GpsTransaction::GpsTransaction(uint64_t transaction_time_us, TranactionType type) :
@@ -38,5 +42,23 @@ const std::string &GpsTransaction::get_nmea_sentence() const
 
 bool GpsTransaction::generate_transaction_blob(uint8_t *transaction_blob_buffer, size_t transaction_blob_buffer_bytes, size_t &transaction_blob_bytes_written) const
 {
+    switch(_type)
+    {
+    case NMEA_sentence:
+        {
+            return GpsSerializer.serialize_nmea_sentence(transaction_blob_buffer,
+                                                            transaction_blob_buffer_bytes,
+                                                            transaction_blob_bytes_written,
+                                                            _transaction_time_us,
+                                                            _sentence.c_str());
+        }
+    case PPS_pulse:
+        {
+            return GpsSerializer.serialize_pps_pulse(transaction_blob_buffer,
+                                                            transaction_blob_buffer_bytes,
+                                                            transaction_blob_bytes_written,
+                                                            _transaction_time_us);
+        }
+    }
     return false;
 }

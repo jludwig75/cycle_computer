@@ -1,1 +1,1 @@
-add_library (transaction_logger transaction_logger.cpp transaction.cpp)
+add_library (transaction_logger transaction_logger.cpp transaction.cpp transaction_log_entry.cpp)
