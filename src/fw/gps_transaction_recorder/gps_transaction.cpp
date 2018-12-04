@@ -29,7 +29,7 @@ GpsTransaction::TranactionType GpsTransaction::transaction_type() const
     return _type;
 }
 
-std::string GpsTransaction::get_nmea_sentence() const
+const std::string &GpsTransaction::get_nmea_sentence() const
 {
     assert(NMEA_sentence == _type);
 

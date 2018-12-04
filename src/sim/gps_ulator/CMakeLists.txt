@@ -2,6 +2,7 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 include_directories(${REPO_ROOT_DIR}/gmock-global/include/)
 include_directories(${REPO_ROOT_DIR}/lib/intf)
 include_directories(${REPO_ROOT_DIR}/src/sim)
+include_directories(${REPO_ROOT_DIR}/src/fw)
 
 #set(UNIT_TEST_NAME uart_ulator_unittest)
 #cxx_executable(${UNIT_TEST_NAME} test gmock_main uart_ulator.cpp)
@@ -42,3 +43,6 @@ include_directories(${REPO_ROOT_DIR}/src/sim)
 #endif()
 
 add_library (gps_ulator gps_ulator.cpp)
+
+target_link_libraries(gps_ulator
+                        gps_transaction_recorder)

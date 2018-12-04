@@ -1,6 +1,8 @@
 #include "uart_ulator/uart_ulator.h"
 #include "gps_ulator/gps_ulator.h"
 
+#include <assert.h>
+
 
 class Esp32 : public Ulator
 {
@@ -19,6 +21,8 @@ public:
             stop();
             return false;
         }
+
+        return true;
     }
     void stop()
     {
@@ -105,4 +109,6 @@ public:
 
 void setup_app_hw_sim()
 {
+    bool ret = board.start();
+    assert(ret);
 }

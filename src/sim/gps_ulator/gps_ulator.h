@@ -1,6 +1,10 @@
 #pragma once
 
+#include <list>
+
 #include "ulator/ulator.h"
+
+#include "gps_transaction_recorder/gps_transaction.h"
 
 
 class SerialInterface;
@@ -14,6 +18,13 @@ public:
     bool start();
     void stop();
 
+protected:
+    void run();
+    static void *gps_thread(void *instance);
+
 private:
     SerialInterface *_device_serial_interface;
+    unsigned long _thread_id;
+    bool _exit_thread;
+    std::list<GpsTransaction> _transactions;
 };
