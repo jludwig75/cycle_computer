@@ -50,7 +50,8 @@ bool GpsTransaction::generate_transaction_blob(uint8_t *transaction_blob_buffer,
                                                             transaction_blob_buffer_bytes,
                                                             transaction_blob_bytes_written,
                                                             _transaction_time_us,
-                                                            _sentence.c_str());
+                                                            _sentence.c_str(),
+                                                            _sentence.length());
         }
     case PPS_pulse:
         {

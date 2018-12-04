@@ -13,7 +13,8 @@ public:
                                     size_t transaction_stream_bytes_remaining,
                                     size_t &bytes_written_to_stream,
                                     uint64_t transaction_time,
-                                    const char *sentence);
+                                    const char *sentence,
+                                    size_t sentence_length);
     bool serialize_pps_pulse(uint8_t *transaction_stream,
                                     size_t transaction_stream_bytes_remaining,
                                     size_t &bytes_written_to_stream,

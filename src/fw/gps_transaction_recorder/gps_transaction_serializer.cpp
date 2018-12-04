@@ -9,16 +9,17 @@ bool GpsTransactionSerializer::serialize_nmea_sentence(uint8_t *transaction_stre
                                 size_t transaction_stream_bytes_remaining,
                                 size_t &bytes_written_to_stream,
                                 uint64_t transaction_time,
-                                const char *sentence)
+                                const char *sentence,
+                                size_t sentence_length)
 {
-    nmea_transaction_log_entry entry(transaction_time, strlen(sentence));
+    nmea_transaction_log_entry entry(transaction_time, sentence_length);
     if (transaction_stream_bytes_remaining < entry.entry_bytes())
     {
         return false;
     }
     bytes_written_to_stream = entry.entry_bytes();
     memcpy(&transaction_stream[0], &entry, sizeof(entry));
-    memcpy(&transaction_stream[sizeof(entry)], sentence, strlen(sentence));
+    memcpy(&transaction_stream[sizeof(entry)], sentence, sentence_length);
     return true;
 }
 
