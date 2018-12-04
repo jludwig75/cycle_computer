@@ -35,3 +35,8 @@ const std::string &GpsTransaction::get_nmea_sentence() const
 
     return _sentence;
 }
+
+bool GpsTransaction::generate_transaction_blob(uint8_t *transaction_blob_buffer, size_t transaction_blob_buffer_bytes, size_t &transaction_blob_bytes_written) const
+{
+    return false;
+}

@@ -6,8 +6,13 @@
 #include <pthread.h>
 
 
-GpsUlator::GpsUlator(SerialInterface *device_serial_interface)
+GpsUlator::GpsUlator(SerialInterface *device_serial_interface) :
+    _device_serial_interface(device_serial_interface)
 {
+    _transactions.push_back(GpsTransaction( 500 * 1000, GpsTransaction::NMEA_sentence, "$test sentence 1\n"));
+    _transactions.push_back(GpsTransaction(1200 * 1000, GpsTransaction::NMEA_sentence, "$test sentence 2\n"));
+    _transactions.push_back(GpsTransaction(2300 * 1000, GpsTransaction::NMEA_sentence, "$test sentence 3\n"));
+    _transactions.push_back(GpsTransaction(3100 * 1000, GpsTransaction::NMEA_sentence, "$test sentence 4\n"));
 }
 
 bool GpsUlator::start()
@@ -25,6 +30,9 @@ void GpsUlator::stop()
 
 static void send_string(SerialInterface * serial, const std::string &str)
 {
+    /// @todo The correct behavior is probably to not prevent buffer overflows
+    /// and just drop data that can't be written to the UART. We'll do this
+    /// for now to make it easier until the app is running.
     size_t bytes_to_send = str.length();
     size_t total_bytes_sent = 0;
     while (bytes_to_send > 0)
@@ -44,7 +52,7 @@ void GpsUlator::run()
     {
         if (!_transactions.empty())
         {
-            if (micros() >= _transactions.front().transaction_time_us())
+            if (mcu_microseconds() >= _transactions.front().transaction_time_us())
             {
                 GpsTransaction transaction = _transactions.front();
                 _transactions.pop_front();
