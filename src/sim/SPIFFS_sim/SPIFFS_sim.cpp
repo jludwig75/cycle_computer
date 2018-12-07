@@ -15,6 +15,8 @@ bool SPIFFSFS::begin(bool formatOnFail, const char * basePath, uint8_t maxOpenFi
 
 bool SPIFFSFS::format()
 {
+    // Make sure the sim directory exists.
+
     return false;
 }
 
