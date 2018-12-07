@@ -4,7 +4,7 @@
 #include <stdlib.h>
 
 
-#define MAX_TRANSACTION_BLOB_BYTES 24
+#define MAX_TRANSACTION_BLOB_BYTES 100
 
 
 class Transaction

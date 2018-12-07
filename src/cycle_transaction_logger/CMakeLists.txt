@@ -1,6 +1,9 @@
 include_directories(${REPO_ROOT_DIR}/lib/intf)
 include_directories(${REPO_ROOT_DIR}/src/fw)
 include_directories(${REPO_ROOT_DIR}/src/sim)
+include_directories(~/.platformio/packages/framework-arduinoespressif32/libraries/FS/src)
+include_directories(~/.platformio/packages/framework-arduinoespressif32/libraries/SPIFFS/src)
+include_directories(${REPO_ROOT_DIR}/src/sim/arduino)
 
 find_package (Threads)
 

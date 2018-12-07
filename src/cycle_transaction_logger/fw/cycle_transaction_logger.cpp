@@ -2,6 +2,8 @@
 #include "gps_transaction_recorder/gps_transaction_recorder.h"
 #include "uart.h"
 
+#include "SPIFFS.h"
+
 
 class CycleTransactionLoggerApp
 {
@@ -12,9 +14,14 @@ public:
     {
 
     }
-    void begin()
+    bool begin()
     {
+        if (!SPIFFS.begin(true))
+        {
+            return false;
+        }
         _gps_recorder.begin(uart__get_serial_interface(1));
+        return true;
     }
     void on_loop()
     {
@@ -27,13 +34,21 @@ private:
 
 
 CycleTransactionLoggerApp app("/cycle_transactions.log");
+bool app_started;
 
 void setup()
 {
-    app.begin();
+    app_started = app.begin();
+    if (!app_started)
+    {
+        printf("Failed to start app\n");
+    }
 }
 
 void loop()
 {
-    app.on_loop();
+    if (app_started)
+    {
+        app.on_loop();
+    }
 }
