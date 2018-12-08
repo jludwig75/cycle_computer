@@ -3,6 +3,7 @@ include_directories(${REPO_ROOT_DIR}/gmock-global/include/)
 include_directories(${REPO_ROOT_DIR}/lib/intf)
 include_directories(${REPO_ROOT_DIR}/src/sim)
 include_directories(${REPO_ROOT_DIR}/src/fw)
+include_directories(${REPO_ROOT_DIR}/include)
 
 #set(UNIT_TEST_NAME uart_ulator_unittest)
 #cxx_executable(${UNIT_TEST_NAME} test gmock_main uart_ulator.cpp)

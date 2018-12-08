@@ -1,7 +1,7 @@
 include_directories(~/.platformio/packages/framework-arduinoespressif32/libraries/FS/src)
 include_directories(~/.platformio/packages/framework-arduinoespressif32/libraries/SPIFFS/src)
 include_directories(${REPO_ROOT_DIR}/src/sim/arduino)
-
+include_directories(${REPO_ROOT_DIR}/include)
 
 
 add_library (transaction_logger

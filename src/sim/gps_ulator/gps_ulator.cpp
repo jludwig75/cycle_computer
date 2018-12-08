@@ -2,6 +2,7 @@
 
 #include "serial_interface.h"
 #include "mcu_time.h"
+#include "interrupt_ulator/interrupt_ulator.h"
 
 #include <pthread.h>
 
@@ -10,8 +11,11 @@ GpsUlator::GpsUlator(SerialInterface *device_serial_interface) :
     _device_serial_interface(device_serial_interface)
 {
     _transactions.push_back(GpsTransaction( 500 * 1000, GpsTransaction::NMEA_sentence, "$test sentence 1\n"));
+    _transactions.push_back(GpsTransaction(1000 * 1000, GpsTransaction::PPS_pulse));
     _transactions.push_back(GpsTransaction(1200 * 1000, GpsTransaction::NMEA_sentence, "$test sentence 2\n"));
+    _transactions.push_back(GpsTransaction(2000 * 1000, GpsTransaction::PPS_pulse));
     _transactions.push_back(GpsTransaction(2300 * 1000, GpsTransaction::NMEA_sentence, "$test sentence 3\n"));
+    _transactions.push_back(GpsTransaction(3000 * 1000, GpsTransaction::PPS_pulse));
     _transactions.push_back(GpsTransaction(3100 * 1000, GpsTransaction::NMEA_sentence, "$test sentence 4\n"));
 }
 
@@ -60,6 +64,10 @@ void GpsUlator::run()
                 if (transaction.transaction_type() == GpsTransaction::NMEA_sentence)
                 {
                     send_string(_device_serial_interface, transaction.get_nmea_sentence());
+                }
+                else if (transaction.transaction_type() == GpsTransaction::PPS_pulse)
+                {
+                    InterruptUlator.trigger_interrupt(25, InterruptMode_Rising);
                 }
             }
         }

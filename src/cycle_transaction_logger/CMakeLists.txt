@@ -4,6 +4,7 @@ include_directories(${REPO_ROOT_DIR}/src/sim)
 include_directories(~/.platformio/packages/framework-arduinoespressif32/libraries/FS/src)
 include_directories(~/.platformio/packages/framework-arduinoespressif32/libraries/SPIFFS/src)
 include_directories(${REPO_ROOT_DIR}/src/sim/arduino)
+include_directories(${REPO_ROOT_DIR}/include)
 
 find_package (Threads)
 
@@ -14,6 +15,7 @@ add_executable(cycle_transaction_logger_sim
                 sim/seup_cycle_logger_simulated_hw.cpp)
 
 target_link_libraries(cycle_transaction_logger_sim
+                        interrupt_manager
                         app_sim
                         sim
                         transaction_logger

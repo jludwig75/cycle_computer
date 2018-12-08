@@ -20,6 +20,8 @@ GpsTransactionRecorder::GpsTransactionRecorder(TransactionLogger &transaction_lo
 void GpsTransactionRecorder::begin(SerialInterface *gps_serial_interface)
 {
     _gps_serial_interface = gps_serial_interface;
+
+    InterruptManager.attachInterrupt(25, this, &InterruptClass::on_high_interrupt, InterruptMode_Rising);
 }
 
 GpsTransactionRecorder::~GpsTransactionRecorder()
@@ -40,4 +42,10 @@ void GpsTransactionRecorder::do_work()
             _transaction_logger.write_transaction(transaction);
         }
     }
+}
+
+void GpsTransactionRecorder::on_high_interrupt()
+{
+    GpsTransaction transaction(mcu_microseconds(), GpsTransaction::PPS_pulse);
+    _transaction_logger.write_transaction(transaction);
 }

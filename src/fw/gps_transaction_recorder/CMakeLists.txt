@@ -3,6 +3,7 @@ add_subdirectory(nmea_sentence_reader)
 include_directories(${REPO_ROOT_DIR}/lib/intf)
 include_directories(${REPO_ROOT_DIR}/src/sim)
 include_directories(${REPO_ROOT_DIR}/src/fw)
+include_directories(${REPO_ROOT_DIR}/include)
 
 add_library(gps_transaction_recorder
                 gps_transaction_recorder.cpp
@@ -12,4 +13,5 @@ add_library(gps_transaction_recorder
                 nmea_sentence_reader/nmea_sentence_reader.cpp)
 
 target_link_libraries(gps_transaction_recorder
-                        transaction_logger)
+                        transaction_logger
+                        interrupt_manager)

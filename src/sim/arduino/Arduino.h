@@ -32,3 +32,17 @@ protected:
     unsigned long _timeout;      // number of milliseconds to wait for the next char before aborting timed read
     unsigned long _startMillis;  // used for timeout measurement
 };
+
+
+#define LOW               0x0
+#define HIGH              0x1
+#define RISING    0x01
+#define FALLING   0x02
+#define CHANGE    0x03
+#define ONLOW     0x04
+#define ONHIGH    0x05
+
+
+void attachInterrupt(uint8_t pin, void (*)(void), int mode);
+
+#define digitalPinToInterrupt(p)    p

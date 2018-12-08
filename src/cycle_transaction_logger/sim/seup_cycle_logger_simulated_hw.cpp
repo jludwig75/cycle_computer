@@ -1,5 +1,6 @@
 #include "uart_ulator/uart_ulator.h"
 #include "gps_ulator/gps_ulator.h"
+#include "interrupt_ulator/interrupt_ulator.h"
 #include "uart.h"
 
 #include <assert.h>
@@ -20,7 +21,7 @@ public:
     }
     bool start()
     {
-        if (!_uart0.start() || !_uart1.start() || !_uart2.start())
+        if (!_uart0.start() || !_uart1.start() || !_uart2.start() || !InterruptUlator.start())
         {
             stop();
             return false;
@@ -33,6 +34,7 @@ public:
         _uart0.stop();
         _uart1.stop();
         _uart2.stop();
+        InterruptUlator.stop();
     }
 
     UartUlator & get_uart0()
