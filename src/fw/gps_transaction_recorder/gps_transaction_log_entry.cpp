@@ -1,8 +1,5 @@
 #include "gps_transaction_log_entry.h"
 
-#define GPS_TRANSACTION_TYPE_NMEA   1
-#define GPS_TRANSACTION_TYPE_PPS    2
-
 
 gps_transaction_log_entry::gps_transaction_log_entry(uint64_t time_stamp, uint8_t transaction_type) :
     transaction_log_entry(time_stamp, GPS_TRANSACTION_OWNER_ID),
@@ -24,7 +21,7 @@ size_t nmea_transaction_log_entry::entry_bytes() const
 
 
 pps_transaction_log_entry::pps_transaction_log_entry(uint64_t time_stamp) :
-    gps_transaction_log_entry(time_stamp, GPS_TRANSACTION_TYPE_NMEA)
+    gps_transaction_log_entry(time_stamp, GPS_TRANSACTION_TYPE_PPS)
 {
 }
 

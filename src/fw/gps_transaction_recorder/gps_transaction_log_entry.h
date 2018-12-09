@@ -3,6 +3,10 @@
 #include "transaction_logger/transaction_log_entry.h"
 
 
+#define GPS_TRANSACTION_TYPE_NMEA   1
+#define GPS_TRANSACTION_TYPE_PPS    2
+
+
 struct __attribute__((__packed__)) gps_transaction_log_entry : public transaction_log_entry
 {
     gps_transaction_log_entry(uint64_t time_stamp, uint8_t transaction_type);
