@@ -6,6 +6,7 @@
 #include <string.h>
 
 GpsTransaction::GpsTransaction() :
+    next(NULL),
     _transaction_time_us(0),
     _type(Invalid_transaction_type),
     _sentence()
@@ -14,6 +15,7 @@ GpsTransaction::GpsTransaction() :
 
 
 GpsTransaction::GpsTransaction(uint64_t transaction_time_us, TranactionType type) :
+    next(NULL),
     _transaction_time_us(transaction_time_us),
     _type(type),
     _sentence()
@@ -22,6 +24,7 @@ GpsTransaction::GpsTransaction(uint64_t transaction_time_us, TranactionType type
 }
 
 GpsTransaction::GpsTransaction(uint64_t transaction_time_us, TranactionType type, const std::string &nmea_sentence) :
+    next(NULL),
     _transaction_time_us(transaction_time_us),
     _type(type),
     _sentence(nmea_sentence)

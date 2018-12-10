@@ -10,6 +10,7 @@ add_library(gps_transaction_recorder
                 gps_transaction.cpp
                 gps_transaction_log_entry.cpp
                 gps_transaction_serializer.cpp
+                gps_transaction_writer.cpp
                 nmea_sentence_reader/nmea_sentence_reader.cpp)
 
 target_link_libraries(gps_transaction_recorder

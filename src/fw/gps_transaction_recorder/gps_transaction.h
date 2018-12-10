@@ -23,6 +23,9 @@ public:
     TranactionType transaction_type() const;
     const std::string &get_nmea_sentence() const;
 
+    // For linking
+    class GpsTransaction *next;
+
 protected:
     virtual bool generate_transaction_blob(uint8_t *transaction_blob_buffer, size_t transaction_blob_buffer_bytes, size_t &transaction_blob_bytes_written) const;
 
