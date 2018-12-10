@@ -66,6 +66,7 @@ bool GpsTransaction::generate_transaction_blob(uint8_t *transaction_blob_buffer,
                                                             transaction_blob_bytes_written,
                                                             _transaction_time_us);
         }
+    default:
+        return false;
     }
-    return false;
 }
