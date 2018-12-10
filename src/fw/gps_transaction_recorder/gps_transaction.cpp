@@ -5,6 +5,12 @@
 #include <assert.h>
 #include <string.h>
 
+GpsTransaction::GpsTransaction() :
+    _transaction_time_us(0),
+    _type(Invalid_transaction_type),
+    _sentence()
+{
+}
 
 
 GpsTransaction::GpsTransaction(uint64_t transaction_time_us, TranactionType type) :

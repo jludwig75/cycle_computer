@@ -10,7 +10,9 @@
 class GpsTransaction : public Transaction
 {
 public:
-    enum TranactionType { NMEA_sentence, PPS_pulse };
+    enum TranactionType { NMEA_sentence, PPS_pulse, Invalid_transaction_type };
+    // Constructor uninitialized structure
+    GpsTransaction();
     // PPS constructor
     // type must be PPS_pulse
     GpsTransaction(uint64_t transaction_time_us, TranactionType type);
