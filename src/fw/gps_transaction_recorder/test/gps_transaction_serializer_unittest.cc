@@ -116,7 +116,7 @@ TEST(GpsTransactionSerializer, fails_to_deserialize_nmea_sentence_from_too_small
     const uint64_t test_time = 23454;
     GpsTransactionSerializer serializer;
     
-    uint8_t stream_buffer[sizeof(nmea_transaction_log_entry) - 1];
+    uint8_t stream_buffer[sizeof(nmea_transaction_log_entry)];
     nmea_transaction_log_entry *entry = (nmea_transaction_log_entry *)stream_buffer;
 
     entry->id = 0x5150;
@@ -128,7 +128,7 @@ TEST(GpsTransactionSerializer, fails_to_deserialize_nmea_sentence_from_too_small
     GpsTransaction deserialized_transaction;
     size_t bytes_deserialized;
     ASSERT_FALSE(serializer.desrialize_uart_transaction(stream_buffer,
-                                                        sizeof(stream_buffer),
+                                                        sizeof(stream_buffer) - 1,
                                                         bytes_deserialized,
                                                         deserialized_transaction));
 }
