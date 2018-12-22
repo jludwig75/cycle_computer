@@ -12,7 +12,8 @@ find_package (Threads)
 
 add_executable(cycle_transaction_logger_sim
                 fw/cycle_transaction_logger.cpp
-                sim/seup_cycle_logger_simulated_hw.cpp)
+                sim/setup_cycle_logger_simulated_hw.cpp
+                sim/setup_cycle_logger_simulated_fw.cpp)
 
 target_link_libraries(cycle_transaction_logger_sim
                         interrupt_manager

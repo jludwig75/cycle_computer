@@ -4,6 +4,7 @@ extern void loop();
 
 // From simulated HW definition
 extern void setup_app_hw_sim();
+extern void setup_app_fw_sim();
 
 int main(int argc, char *argv[])
 {
@@ -12,6 +13,7 @@ int main(int argc, char *argv[])
 
     // Allow the simulation to setup its HW
     setup_app_hw_sim();
+    setup_app_fw_sim();
 
     // Run the FW.
     setup();
