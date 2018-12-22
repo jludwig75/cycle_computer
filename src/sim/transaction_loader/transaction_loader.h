@@ -1,5 +1,6 @@
 #pragma once
 
+#include <map>
 #include <string>
 
 #include <stdlib.h>
@@ -17,7 +18,9 @@ public:
 class TransactionLoader
 {
 public:
-    bool register_transaction_handler(uint8_t transaction_owner_id, TransactionHandler &handler);
+    bool register_transaction_handler(uint8_t transaction_owner_id, TransactionHandler *handler);
 
     bool load_transactions(const std::string & transaction_log_file_name);
+private:
+    std::map<uint8_t, TransactionHandler *> _transaction_handler_map;
 };
