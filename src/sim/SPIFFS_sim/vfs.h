@@ -57,5 +57,5 @@ public:
     boolean     isDirectory(void) override;
     FileImplPtr openNextFile(const char* mode) override;
     void        rewindDirectory(void) override;
-    operator    bool();
+    operator    bool() override;
 };

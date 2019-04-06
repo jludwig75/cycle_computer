@@ -5,7 +5,7 @@ add_subdirectory(transaction_loader)
 add_subdirectory(mcu)
 add_subdirectory(app)
 
-add_library (sim)
+add_library (sim dummy.cpp)
 
 target_link_libraries(sim
                         uart_ulator
